@@ -1,5 +1,5 @@
 import pytest
-from problems.leetcode.easy.climbing_stairs import Solution
+from problems.leetcode.one_d_dp.climbing_stairs import Solution
 
 @pytest.fixture
 def sol():

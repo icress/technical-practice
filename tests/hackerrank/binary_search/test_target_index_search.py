@@ -1,4 +1,4 @@
-from problems.hackerrank.easy.target_index_search import binarySearch
+from problems.hackerrank.binary_search.target_index_search import binarySearch
 
 class Test_Solution:
     def test_basic(self):

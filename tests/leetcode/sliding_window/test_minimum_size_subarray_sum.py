@@ -1,5 +1,5 @@
 import pytest
-from problems.leetcode.medium.minimum_size_subarray_sum import Solution
+from problems.leetcode.sliding_window.minimum_size_subarray_sum import Solution
 
 @pytest.fixture
 def sol():
