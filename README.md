@@ -11,5 +11,3 @@ The third line states whether or not the user needs to review this in the future
 ## Review
 
 I included a script to remind the user to revisit tests that they solved over three days ago and need to review. To see a list of problems to review, run `python review.py` in the project terminal.
-
-Testing
