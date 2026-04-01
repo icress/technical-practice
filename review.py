@@ -8,6 +8,8 @@ from datetime import datetime, timedelta, timezone
 
 PROBLEMS_DIR = Path(__file__).parent / "problems"
 DATE_PATTERN = re.compile(r"Date Solved:\s*(\d{4}-\d{2}-\d{2})")
+DIFFICULTY_PATTERN = re.compile(r"Difficulty:\s*(\w+)")
+NEED_TO_REVIEW_PATTERN = re.compile(r"Need to review:\s*(\w+)")
 THRESHOLD_DAYS = 3
 
 
@@ -17,14 +19,17 @@ def extract_metadata(filepath: Path) -> dict:
         with filepath.open() as f:
             first_line = f.readline()
             second_line = f.readline()
+            third_line = f.readline()
         date_match = DATE_PATTERN.search(first_line)
-        difficulty_match = re.search(r"Difficulty:\s*(\w+)", second_line)
+        difficulty_match = DIFFICULTY_PATTERN.search(second_line)
+        need_to_review_match = NEED_TO_REVIEW_PATTERN.search(third_line)
 
-        if date_match and difficulty_match:
+        if date_match and difficulty_match and need_to_review_match:
             return {
                 "date": datetime.strptime(date_match.group(1), "%Y-%m-%d").replace(
                 tzinfo=timezone.utc),
                 "difficulty": difficulty_match.group(1).title() if difficulty_match else None,
+                "need_to_review": need_to_review_match.group(1).title() if need_to_review_match else None
             }
     except (OSError, ValueError):
         pass
@@ -41,7 +46,7 @@ def get_problems_older_than(days: int = THRESHOLD_DAYS) -> list[dict]:
 
     for filepath in sorted(PROBLEMS_DIR.rglob("*.py")):
         problem_info = extract_metadata(filepath)
-        if problem_info and problem_info["date"] < cutoff:
+        if problem_info and problem_info["date"] < cutoff and problem_info["need_to_review"] == "True":
             # Build a readable title from the filename
             title = filepath.stem.replace("_", " ").title()
             old_problems.append({
@@ -64,7 +69,7 @@ if __name__ == "__main__":
     else:
         print(f"\n{len(results)} problem(s) solved more than {THRESHOLD_DAYS} days ago:\n")
         for p in results:
-            print(f"  [{p['title']} {p['platform']} - {p['difficulty']}]")
+            print(f"  {p['title']} [{p['platform']} - {p['difficulty']}]")
             print(f"    Solved: {p['date_solved']} ({p['days_ago']} days ago)")
             print(f"    Path:   {p['path']}\n")
 

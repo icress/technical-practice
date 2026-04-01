@@ -1,5 +1,7 @@
 # Date Solved: 2026-03-29
-# Easy
+# Difficulty: Easy
+# Need to review: True
+
 # 70. Climbing Stairs
 # https://leetcode.com/problems/climbing-stairs/description/?envType=study-plan-v2&envId=top-interview-150
 
