@@ -6,7 +6,7 @@ Practice problems, solutions, and tests for problems found on LeetCode and Hacke
 
 I separate tests by the platform they were found on and the overall concept they test. Inside the file I make the first line `Date Solved: ` followed by the date in year-month-day format (e.g. `Date Solved: 2026-12-22`).
 The second line states the difficulty of the question in this format `Difficulty: Medium`.
-The third line states whether or not the user needs to review this in the future. The format is `Need to review: True` or `# Need to review: False`
+The third line states whether or not the user needs to review this in the future. The format is `Need to review: True` or `Need to review: False`
 
 ## Review
 
