@@ -1,5 +1,6 @@
-# 209. Minimum Size Subarray Sum
+# Date Solved: 2026-03-29
 # Medium
+# 209. Minimum Size Subarray Sum
 # https://leetcode.com/problems/minimum-size-subarray-sum/description/?envType=study-plan-v2&envId=top-interview-150
 
 """
