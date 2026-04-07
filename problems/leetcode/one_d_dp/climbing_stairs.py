@@ -1,6 +1,6 @@
-# Date Solved: 2026-03-29
+# Date Solved: 2026-04-07
 # Difficulty: Easy
-# Need to review: True
+# Need to review: False
 
 # 70. Climbing Stairs
 # https://leetcode.com/problems/climbing-stairs/description/?envType=study-plan-v2&envId=top-interview-150
@@ -40,11 +40,12 @@ class Solution:
             return 1
         if n == 2:
             return 2
+
         ways1 = 1
-        ways2 = 1
-        result = 2
-        for step in range(3, n+1):
-            ways2 = ways1
-            ways1 = result
+        ways2 = 2
+        result = 3
+        for _ in range(3, n):
+            ways1 = ways2
+            ways2 = result
             result = ways1 + ways2
         return result
