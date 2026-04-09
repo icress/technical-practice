@@ -1,6 +1,5 @@
 import pytest
 from problems.leetcode.hashmap.two_sum import Solution
-from tests.helpers.build_tree import build_tree
 
 @pytest.fixture
 def sol():

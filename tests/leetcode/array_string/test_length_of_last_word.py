@@ -1,6 +1,5 @@
 import pytest
 from problems.leetcode.array_string.length_of_last_word import Solution
-from tests.helpers.build_tree import build_tree
 
 @pytest.fixture
 def sol():
