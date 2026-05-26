@@ -1,0 +1,19 @@
+import pytest
+from problems.leetcode.array_string.rotate_array import Solution
+
+@pytest.fixture
+def sol():
+    return Solution()
+class Test_Solution:
+    def test_basic(self, sol):
+        nums = [1, 2, 3, 4, 5, 6, 7]
+        sol.rotate(nums, 3)
+        assert nums == [5, 6, 7, 1, 2, 3, 4]
+    def test_k_larger_than_length(self, sol):
+        nums = [1, 2]
+        sol.rotate(nums, 3)  # 3 % 2 == 1
+        assert nums == [2, 1]
+    def test_k_zero(self, sol):
+        nums = [1, 2, 3]
+        sol.rotate(nums, 0)
+        assert nums == [1, 2, 3]
